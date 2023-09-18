@@ -70,7 +70,7 @@ int print_arg(va_list print, const char *format)
 				case 's':
 					str = va_arg(print, const char*);
 					if (str == NULL)
-						return (-1);
+						str = '\0';
 					byte += print_string(str);
 					break;
 				default:
