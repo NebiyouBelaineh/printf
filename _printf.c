@@ -1,41 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
-
-
-/**
- * print_char - prints character argument
- *
- * @c: character to be printed
- *
- * Return: void;
-*/
-
-void print_char(char c)
-{
-	_putchar(c);
-}
-
-
-/**
- * print_string - prints string
- *
- * @str: string to print
- *
- * Return: printed number of bytes
-*/
-int print_string(const char *str)
-{
-	int byte = 0;
-
-	while (*str)
-	{
-		_putchar(*str);
-		str++;
-		byte++;
-	}
-	return (byte);
-}
 /**
 * print_arg - prints arguments for printf function
 *
@@ -47,8 +10,9 @@ int print_string(const char *str)
 int print_arg(va_list print, const char *format)
 {
 	int byte = 0/*,num*/;
-	char chr, c;
-	const char *str;
+	char chr;
+	int (*fun_pt)(va_list);
+
 
 	while (*format)
 	{
@@ -56,26 +20,16 @@ int print_arg(va_list print, const char *format)
 		{
 			format++;
 			chr = *format;
-			switch (chr)
+			if (chr == '%')
 			{
-				case '%':
-					_putchar(chr);
-					byte++;
-					break;
-				case 'c':
-					c = va_arg(print, int);
-					print_char(c);
-					byte++;
-					break;
-				case 's':
-					str = va_arg(print, const char*);
-					if (str == NULL)
-						str = "(null)";
-					byte += print_string(str);
-					break;
-				default:
-					return (-1);
+				_putchar('%');
+				byte++;
 			}
+			fun_pt = get_func(chr);
+			if (fun_pt != NULL)
+				byte += fun_pt(print);
+			else
+				return (-1);
 		}
 		else
 		{
