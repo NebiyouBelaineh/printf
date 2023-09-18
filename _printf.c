@@ -19,6 +19,8 @@ int print_arg(va_list print, const char *format)
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+				break;
 			chr = *format;
 			if (chr == '%')
 			{
