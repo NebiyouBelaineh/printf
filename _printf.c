@@ -63,6 +63,9 @@ int _printf(const char *format, ...)
 	va_list print;
 	int bytes = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(print, format);
 	bytes = print_char(print, format);
 	va_end(print);
