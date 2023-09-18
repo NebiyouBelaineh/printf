@@ -47,7 +47,7 @@ int print_string(char *str)
 */
 int print_arg(va_list print, const char *format)
 {
-	int byte = 0, num;
+	int byte = 0/*,num*/;
 	char chr, c;
 	char *str;
 
@@ -72,17 +72,8 @@ int print_arg(va_list print, const char *format)
 					str = va_arg(print, char*);
 					print_string(str);
 					break;
-				case 'd':
-					num = va_arg(print, int);
-					byte += _print_int(num);
-					break;
-				case 'i':
-					num = va_arg(print, int);
-					byte += _print_int(num);
-					break;
 				default:
-				printf("Not supported yet\n");
-					break;
+					return (-1);
 			}
 		}
 		else
