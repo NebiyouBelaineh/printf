@@ -24,7 +24,7 @@ void print_char(char c)
  *
  * Return: printed number of bytes
 */
-int print_string(char *str)
+int print_string(const char *str)
 {
 	int byte = 0;
 
