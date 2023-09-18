@@ -6,9 +6,10 @@
  *
  * Return: printed number of bytes
  */
+
 int _print_int(int num)
 {
-	int rev = 0, i = 0, count;
+	int i = 0, count;
 	char str[20];
 
 	if (num < 0)
