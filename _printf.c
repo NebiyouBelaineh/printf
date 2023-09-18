@@ -11,10 +11,9 @@
  * Return: void;
 */
 
-int print_char(char c)
+void print_char(char c)
 {
 	_putchar(c);
-	return (0);
 }
 
 
@@ -70,7 +69,7 @@ int print_arg(va_list print, const char *format)
 					break;
 				case 's':
 					str = va_arg(print, char*);
-					print_string(str);
+					byte += print_string(str);
 					break;
 				default:
 					return (-1);
