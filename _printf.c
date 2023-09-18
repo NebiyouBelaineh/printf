@@ -69,6 +69,8 @@ int print_arg(va_list print, const char *format)
 					break;
 				case 's':
 					str = va_arg(print, const char*);
+					if (str == NULL)
+						str = "(null)";
 					byte += print_string(str);
 					break;
 				default:
