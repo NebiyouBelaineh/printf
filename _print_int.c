@@ -6,7 +6,6 @@
  *
  * Return: printed number of bytes
  */
-
 int _print_int(int num)
 {
 	int i = 0, count;
