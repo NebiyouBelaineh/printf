@@ -9,7 +9,7 @@
 int _print_int(int num)
 {
 	int i = 0, count;
-	char str[20];
+	char str[2000];
 
 	if (num < 0)
 	{
