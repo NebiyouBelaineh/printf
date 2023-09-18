@@ -1,15 +1,49 @@
 #include "main.h"
+
 /**
-* print_char - prints arguments for printf function
+ * print_char - prints character argument
+ *
+ * @c: character to be printed
+ *
+ * Return: void;
+*/
+int print_char(char c)
+{
+	_putchar(c);
+	return (0);
+}
+
+
+/**
+ * print_string - prints string
+ *
+ * @str: string to print
+ *
+ * Return: printed number of bytes
+*/
+int print_string(char *str)
+{
+	int byte = 0;
+
+	while (*str)
+	{
+		_putchar(*str);
+		str++;
+		byte++;
+	}
+	return (byte);
+}
+/**
+* print_arg - prints arguments for printf function
 *
 * @print: variadic function parameter
 * @format: format specifier
 *
 * Return: number of printed bytes
 */
-int print_char(va_list print, const char *format)
+int print_arg(va_list print, const char *format)
 {
-	int byte = 0;
+	int byte = 0, num;
 	char chr, c;
 	char *str;
 
@@ -27,23 +61,29 @@ int print_char(va_list print, const char *format)
 					break;
 				case 'c':
 					c = va_arg(print, int);
-					_putchar(c);
+					print_char(c);
 					byte++;
 					break;
 				case 's':
 					str = va_arg(print, char*);
-					while (*str)
-					{
-						_putchar(*str);
-						str++;
-						byte++;
-					}
+					print_string(str);
+					break;
+				case 'd':
+					num = va_arg(print, int);
+					byte += _print_int(num);
+					break;
+				case 'i':
+					num = va_arg(print, int);
+					byte += _print_int(num);
+					break;
+				default:
+				printf("Not supported yet\n");
 					break;
 			}
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 			byte++;
 		}
 		format++;
@@ -67,7 +107,7 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(print, format);
-	bytes = print_char(print, format);
+	bytes = print_arg(print, format);
 	va_end(print);
 	return (bytes);
 }

@@ -7,6 +7,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int print_char(va_list print, const char *format);
+int print_arg(va_list print, const char *format);
+int _print_int(int num);
 
 #endif/*MAIN_H*/
