@@ -48,7 +48,7 @@ int print_arg(va_list print, const char *format)
 {
 	int byte = 0/*,num*/;
 	char chr, c;
-	char *str;
+	const char *str;
 
 	while (*format)
 	{
@@ -68,7 +68,7 @@ int print_arg(va_list print, const char *format)
 					byte++;
 					break;
 				case 's':
-					str = va_arg(print, char*);
+					str = va_arg(print, const char*);
 					byte += print_string(str);
 					break;
 				default:
