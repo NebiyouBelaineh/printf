@@ -13,6 +13,9 @@ int print_char(va_list print)
 
 	char c = va_arg(print, int);
 
+	if (c == NULL)
+		return (-1);
+
 	_putchar(c);
 	byte++;
 	return (byte);
@@ -29,14 +32,18 @@ int print_char(va_list print)
 int print_string(va_list print)
 {
 	int byte = 0;
-
 	char *str = va_arg(print, char*);
 
-	while (*str)
+	if (str != NULL)
 	{
-		_putchar(*str);
-		str++;
-		byte++;
+		while (*str)
+		{
+			_putchar(*str);
+			str++;
+			byte++;
+		}
 	}
+	else
+		return (-1);
 	return (byte);
 }
