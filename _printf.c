@@ -22,21 +22,9 @@ int print_arg(va_list print, const char *format)
 			/*if (*format == '\0')*/
 				/*break;*/
 			chr = *format;
-			if (chr == '%')
-			{
-				_putchar('%');
-				byte++;
-			}
 			fun_pt = get_func(chr);
 			if (fun_pt != NULL)
-			{
-				if (fun_pt != (-1))
-				{
-					byte += fun_pt(print);
-				}
-				else
-					return (-1);
-			}
+				byte += fun_pt(print);
 			else
 				return (-1);
 		}

@@ -12,8 +12,7 @@ int _print_int(va_list print)
 	char str[2000];
 
 	num = va_arg(print, int);
-	if (sizeof(num) != 4)
-		return (-1);
+
 	if (num < 0)
 	{
 		_putchar('-');

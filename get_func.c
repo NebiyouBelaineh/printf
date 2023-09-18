@@ -14,6 +14,7 @@ int (*get_func(char specifier))(va_list print)
 		{'s', print_string},
 		{'c', print_char},
 		{'d', _print_int},
+		{'%', print_percent}
 	};
 	int i, size = 5;
 
