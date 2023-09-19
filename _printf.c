@@ -14,7 +14,7 @@ int print_arg(va_list print, const char *format)
 	int (*fun_pt)(va_list);
 
 
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -50,11 +50,16 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))
 		return (-1);
-	if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')
-		return (-1);
+	/*if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')*/
+		/*return (-1);*/
 
 	va_start(print, format);
 	bytes = print_arg(print, format);
+	if (bytes < 0)
+	{
+		va_end(print);
+		return (bytes);
+	}
 	va_end(print);
 	return (bytes);
 }
