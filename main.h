@@ -33,7 +33,6 @@ int print_percent(va_list print);
 int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr);
 int get_func(char format, prt_func func_print[], char buffer[],
 		     int *buf_lenptr, int *buf_posptr, va_list print);
-int print_binary(va_list print);
 void init_buffer(char buffer[]);
 void buffer_write(char buffer[], int *buf_len, int *buf_pos);
 int buffer_copy(char format, char buffer[], int *buf_lenptr, int *buf_posptr);
@@ -48,7 +47,7 @@ unsigned int convert_toUnsignedInt(int num);
 char *convert_toOctal(unsigned int oct);
 char *convert_tohex(char size, unsigned int n);
 char *size_tHex(char size, size_t n);
-
-
+char *bin_convert(unsigned int num);
+int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
 
 #endif/*MAIN_H*/
