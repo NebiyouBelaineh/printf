@@ -11,8 +11,8 @@
 * Return: number of bytes written(1 since pritning char);
 */
 
-int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
-{
+/**int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)*/
+/*{
 	if (*buf_lenptr < 1024)
 	{
 		buffer[*buf_posptr] = va_arg(print, int);
@@ -29,7 +29,7 @@ int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 		*buf_lenptr += 1;
 	}
 	return (1);
-}
+}*/
 
 /**
  * print_string - writes string to buffer
@@ -41,9 +41,9 @@ int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
  * Return: Returns number of characters written to the buffer
  */
 
-int print_string(va_list print, char buffer[], int *buf_lenptr,
-	int *buf_posptr)
-{
+/*int print_string(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr)*/
+/*{
 	char *str;
 	int i = 0, bytes = 0;
 
@@ -61,7 +61,7 @@ int print_string(va_list print, char buffer[], int *buf_lenptr,
 		bytes++;
 	}
 	return (bytes);
-}
+}*/
 
 
 /**

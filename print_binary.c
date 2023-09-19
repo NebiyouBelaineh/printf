@@ -53,11 +53,11 @@ char *bin_convert(unsigned int num)
 int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes, i;
-	unsigned int num;
+	unsigned int n;
 	char *bi;
 
-	num = va_arg(args, unsigned int);
-	bi = bin_convert(num);
+	n = va_arg(args, unsigned int);
+	bi = bin_convert(n);
 	if (bi == NULL)
 		return (0);
 	i = bytes = 0;

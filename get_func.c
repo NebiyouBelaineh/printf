@@ -16,19 +16,19 @@
 */
 
 int get_func(char format, prt_func func_print[], char buffer[],
-		     int *buf_lenptr, int *buf_posptr, va_list print)
+                     int *buf_lenptr, int *buf_posptr, va_list print)
 {
-	int i, bytes, len = 4;
+        int i, bytes, len = 12;
 
-	bytes = 0;
-	for (i = 0; i < len; i++)
-	{
-		if (format == func_print[i].symbol)
-		{
-			bytes += func_print[i].fun_pt(print, buffer, buf_lenptr,
-						  buf_posptr);
-			return (bytes);
-		}
-	}
-	return (0);
+        bytes = 0;
+        for (i = 0; i < len; i++)
+        {
+                if (format == func_print[i].symbol)
+                {
+                        bytes += func_print[i].fun_pt(print, buffer, buf_lenptr,
+                                                  buf_posptr);
+                        return (bytes);
+                }
+        }
+        return (0);
 }
