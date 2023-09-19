@@ -56,7 +56,7 @@ int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 	unsigned int num;
 	char *bi;
 
-	n = va_arg(args, unsigned int);
+	num = va_arg(args, unsigned int);
 	bi = bin_Convert(num);
 	if (bi == NULL)
 		return (0);
