@@ -13,6 +13,7 @@ int print_string(va_list print);
 int print_percent(va_list print);
 int _print_int(va_list print);
 int (*get_func(char))(va_list);
+int print_binary(va_list print);
 
 /**
 * struct printing_func - struct data structure to store to point

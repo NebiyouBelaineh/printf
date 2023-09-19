@@ -1,0 +1,4 @@
+*.out
+test*
+testing.c
+/testing_files
