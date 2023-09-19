@@ -58,7 +58,7 @@ int _printf(const char *format, ...)
 	if (bytes < 0)
 	{
 		va_end(print);
-		return (-1);
+		return (bytes);
 	}
 	va_end(print);
 	return (bytes);
