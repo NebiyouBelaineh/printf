@@ -53,6 +53,8 @@ int print_string(va_list print)
 	int byte = 0;
 	char *str = va_arg(print, char*);
 
+	if (str == NULL)
+		str = "(null)";
 	while (*str)
 	{
 		_putchar(*str);
