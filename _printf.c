@@ -52,13 +52,13 @@ int _printf(const char *format, ...)
 	va_list print;
 	int bytes = 0;
 
-	/*if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))
-		return (-1);*/
+	/*if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))*/
+		/*return (-1);*/
 	/*if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')*/
 		/*return (-1);*/
 	va_start(print, format);
 	if (format == NULL || print == NULL)
-                return (-1);
+		return (-1);
 	bytes = print_arg(print, format);
 	if (bytes < 0)
 	{

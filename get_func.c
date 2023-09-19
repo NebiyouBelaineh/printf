@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * get_func - gets the right function to use depending on the
  * conversion specifier
@@ -7,6 +8,7 @@
  *
  * Return: appropriate function along with respective return value.
 */
+
 int (*get_func(char specifier))(va_list print)
 {
 	prt_func func_print[] = {
