@@ -68,6 +68,7 @@ int _printf(const char *format, ...)
 		{'r', print_reverse},
 		{'R', print_rot13},
 		{'p', print_pointer},
+		{'S', print_Special},
 		};
 
 	init_buffer(buffer);
