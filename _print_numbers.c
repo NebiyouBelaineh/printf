@@ -1,24 +1,26 @@
 #include "main.h"
+
 /**
- * _print_int - Call the function to copy a number to the buffer
- *
- * @print: Va_list of all given arguments to _printf
- * @buffer: The buffer being copied to to print
+ * print_unsigned - retrives the number of written unsigned int to buffer
+ * @print: unsigned int argument
+ * @buffer: buffer unsigned int is written to
  * @buf_lenptr: pointer to the current length of the buffer
  * @buf_posptr: pointer to the current position of the buffer
  *
- * Return: number of bytes written to the buffer
+ * Return: number of bytes written to buffer
  */
 
-int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
+int print_unsigned(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr)
 {
+	unsigned int ui;
 	int bytes;
-	int num;
 
-	num = va_arg(print, int);
-	bytes = print_num(num, buffer, buf_lenptr, buf_posptr);
+	ui = va_arg(print, unsigned int);
+	bytes = print_unsignedInt(ui, buffer, buf_lenptr, buf_posptr);
 	return (bytes);
 }
+
 /**
  * print_unsignedInt - write unsigned integer to the buffer
  *
@@ -29,6 +31,7 @@ int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
  *
  * Return: number of bytes written to buffer
  */
+
 int print_unsignedInt(unsigned int num, char buffer[],
 	int *buf_lenptr, int *buf_posptr)
 {
@@ -55,8 +58,6 @@ int print_unsignedInt(unsigned int num, char buffer[],
 	return (bytes);
 }
 
-
-
 /**
 * print_octal - prints the octal version of an unsigned int to buffer
 * @print: number to be printed ffrom arguments
@@ -64,7 +65,8 @@ int print_unsignedInt(unsigned int num, char buffer[],
 * @buf_lenptr: pointer to the current length of the buffer
 * @buf_posptr: pointer to the current position of the buffer
 * Return: numbers of chars written to buffer
-**/
+*/
+
 int print_octal(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	unsigned int num;
@@ -89,6 +91,7 @@ int print_octal(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 	free(octal);
 	return (bytes);
 }
+
 /**
 * print_hex - prints the hexadecimal conversion of a decimal number, lowercase
 * @args: number to be printed
@@ -97,6 +100,7 @@ int print_octal(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 * @buf_posptr: current buffer index
 * Return: numbers of chars written to buffer
 **/
+
 int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	unsigned int num;
@@ -122,6 +126,7 @@ int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 	free(hex);
 	return (bytes);
 }
+
 /**
 * print_HEX - prints the hexadecimal conversion of a decimal number, uppercase
 * @args: number to be printed
@@ -130,6 +135,7 @@ int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 * @buf_posptr: current buffer index
 * Return: numbers of chars written to buffer
 **/
+
 int print_HEX(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes, i;

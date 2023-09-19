@@ -62,6 +62,28 @@ int print_string(va_list print, char buffer[], int *buf_lenptr,
 	}
 	return (bytes);
 }
+
+/**
+ * _print_int - Call the function to copy a number to the buffer
+ *
+ * @print: Va_list of all given arguments to _printf
+ * @buffer: The buffer being copied to to print
+ * @buf_lenptr: pointer to the current length of the buffer
+ * @buf_posptr: pointer to the current position of the buffer
+ *
+ * Return: number of bytes written to the buffer
+ */
+
+int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
+{
+	int bytes;
+	int num;
+
+	num = va_arg(print, int);
+	bytes = print_num(num, buffer, buf_lenptr, buf_posptr);
+	return (bytes);
+}
+
 /**
  * print_num - copy num to the buffer
  *
