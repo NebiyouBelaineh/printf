@@ -1,47 +1,49 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
 
 /**
-* print_arg - prints arguments for printf function
+* print_arg - Finds appropriate function according to format specifier
 *
-* @print: variadic function parameter
-* @format: format specifier
+* @format: Format specifier
+* @func_print: Struct holding appropriate function for conversion
+* specifiers
+* @buffer: Buffer needed to copy
+* @buf_lenptr: Pointer to the length of the buffer
+* @buf_posptr: Pointer to the position within the buffer
+* @print: va_list to retrieve all arguments to _printf function
 *
-* Return: number of printed bytes
+* Return: Return the number of characters written to stdout
 */
 
-int print_arg(va_list print, const char *format)
+int print_arg(const char *format, va_list print, char buffer[],
+		  int *buf_lenptr, int *buf_posptr, prt_func func_print[])
 {
-	int byte = 0/*,num*/;
-	char chr;
-	int (*fun_pt)(va_list);
+	int n, bytes, count;
 
-
-	while (*format != '\0')
+	bytes = 0;
+	for (n = 0; format[n] != '\0' && format != NULL; n++)
 	{
-		if (*format == '%')
+		if (format[n] == '%')
 		{
-			format++;
-			chr = *format;
-			fun_pt = get_func(chr);
-			if (fun_pt != NULL)
-				byte += fun_pt(print);
-			else
-				return (-1);
+			n++;
+			count = get_func(format[n], func_print, buffer,
+			 buf_lenptr, buf_posptr, print);
+			if (count == 0)
+				bytes += buffer_copy(format[n], buffer,
+				 buf_lenptr, buf_posptr);
+			bytes += count;
 		}
 		else
 		{
-			_putchar(*format);
-			byte++;
+			bytes += buffer_copy(format[n], buffer, buf_lenptr,
+						buf_posptr);
 		}
-		format++;
 	}
-	return (byte);
+	return (bytes);
 }
 
 /**
-* _printf - writes formated output to stdout
+* _printf - Writes formatted output stdout
+*
 * @format: format specifier
 *
 * Return: number of bytes written
@@ -50,21 +52,27 @@ int print_arg(va_list print, const char *format)
 int _printf(const char *format, ...)
 {
 	va_list print;
-	int bytes = 0;
+	char buffer[1024];
+	int bytes, buf_len, buf_pos, *buf_lenptr, *buf_posptr;
 
-	/*if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))*/
-		/*return (-1);*/
-	/*if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')*/
-		/*return (-1);*/
+	prt_func func_print[] = {
+		{'c', print_char},
+		{'s', print_string},
+		{'i', _print_int},
+		{'d', _print_int},
+		};
+
+	init_buffer(buffer);
+	bytes = buf_pos = 0;
+	buf_len = 1;
+	buf_lenptr = &buf_len;
+	buf_posptr = &buf_pos;
 	va_start(print, format);
 	if (format == NULL || print == NULL)
 		return (bytes);
-	bytes = print_arg(print, format);
-	if (bytes < 0)
-	{
-		va_end(print);
-		return (bytes);
-	}
+	bytes = print_arg(format, print, buffer,
+			      buf_lenptr, buf_posptr, func_print);
+	buffer_write(buffer, buf_lenptr, buf_posptr);
 	va_end(print);
 	return (bytes);
 }
