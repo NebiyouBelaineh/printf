@@ -9,7 +9,7 @@
 int _print_int(va_list print)
 {
 	int i = 0, count, num;
-	char str[2000];
+	char str[65535];
 
 	num = va_arg(print, int);
 

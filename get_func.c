@@ -14,9 +14,10 @@ int (*get_func(char specifier))(va_list print)
 		{'s', print_string},
 		{'c', print_char},
 		{'d', _print_int},
-		{'%', print_percent}
+		{'%', print_percent},
+		{'b', print_binary}
 	};
-	int i, size = 5;
+	int i, size = 6;
 
 	for (i = 0; i < size; i++)
 		if (func_print[i].symbol == specifier)
