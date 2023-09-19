@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 		{'s', print_string},
 		{'i', _print_int},
 		{'d', _print_int},
-		{'u', print_unsignedInt},
+		{'u', print_unsigned},
 		{'o', print_octal},
 		{'x', print_hex},
 		{'X', print_HEX},

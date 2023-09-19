@@ -39,6 +39,8 @@ int buffer_copy(char format, char buffer[], int *buf_lenptr, int *buf_posptr);
 int print_num(int num, char buffer[], int *buf_lenptr, int *buf_posptr);
 int print_unsignedInt(unsigned int num, char buffer[],
 	int *buf_lenptr, int *buf_posptr);
+int print_unsigned(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
 int print_octal(va_list print, char buffer[], int *buf_lenptr,
 	int *buf_posptr);
 int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
@@ -49,5 +51,13 @@ char *convert_tohex(char size, unsigned int n);
 char *size_tHex(char size, size_t n);
 char *bin_convert(unsigned int num);
 int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
+int print_reverse(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
+int print_rot13(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
+int print_pointer(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
+int print_Special(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
 
 #endif/*MAIN_H*/
