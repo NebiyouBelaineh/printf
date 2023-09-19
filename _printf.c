@@ -50,8 +50,8 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))
 		return (-1);
-	if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')
-		return (-1);
+	/*if (*format == '%' && *(format + 1) == ' ' && *(format + 2) == '\0')*/
+		/*return (-1);*/
 
 	va_start(print, format);
 	bytes += print_arg(print, format);
