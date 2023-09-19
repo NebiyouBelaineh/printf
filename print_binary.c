@@ -3,11 +3,11 @@
 #include "main.h"
 
 /**
-* bin_convert - represents an unsigned int to binary
+* bin_convert - Converts an unsigned int to binary
 *
 * @num: Number to be converted
 *
-* Return: pointer to char
+* Return: Pointer to char
 **/
 
 char *bin_convert(unsigned int num)
@@ -24,7 +24,7 @@ char *bin_convert(unsigned int num)
 	}
 	b_num[i] = '\0';
 
-	binum = malloc(sizeof(char) * i);
+	binum = malloc(sizeof(char) * (i + 1));
 	if (binum == NULL)
 		return (NULL);
 
