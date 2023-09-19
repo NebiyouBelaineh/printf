@@ -37,6 +37,6 @@ void buffer_write(char buffer[], int *buf_len, int *buf_pos);
 int buffer_copy(char format, char buffer[], int *buf_lenptr, int *buf_posptr);
 int print_num(int num, char buffer[], int *buf_lenptr, int *buf_posptr);
 char *bin_convert(unsigned int num);
-
+int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
 
 #endif/*MAIN_H*/

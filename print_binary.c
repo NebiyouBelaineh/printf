@@ -38,3 +38,64 @@ char *bin_convert(unsigned int num)
 	binum[j] = '\0';
 	return (binum);
 }
+
+/**
+ * bi_print - prints the binary conversion of decimals
+ *
+ * @args: number to be printed
+ * @buffer: Memory for printing
+ * @buf_lenptr: buffer length
+ * @buf_posptr: Position of a buffer
+ *
+ * Return: numbers of bytes written to buffer
+ **/
+
+int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
+{
+	int bytes, i;
+	unsigned int num;
+	char *bi;
+
+	n = va_arg(args, unsigned int);
+	bi = bin_Convert(num);
+	if (bi == NULL)
+		return (0);
+	i = bytes = 0;
+	while (bi[i] != '\0')
+	{
+		buffer[*buf_posptr] = bi[i];
+		*buf_posptr += 1;
+		*buf_lenptr += 1;
+		if (*buf_lenptr == 1024)
+		{
+			buffer write(buffer, buf_lenptr, buf_posptr);
+		}
+		i++, bytes++;
+	}
+	free(bi);
+	return (bytes);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
