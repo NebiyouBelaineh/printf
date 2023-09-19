@@ -57,7 +57,7 @@ int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 	char *bi;
 
 	num = va_arg(args, unsigned int);
-	bi = bin_Convert(num);
+	bi = bin_convert(num);
 	if (bi == NULL)
 		return (0);
 	i = bytes = 0;
@@ -68,34 +68,10 @@ int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 		*buf_lenptr += 1;
 		if (*buf_lenptr == 1024)
 		{
-			buffer write(buffer, buf_lenptr, buf_posptr);
+			buffer_write(buffer, buf_lenptr, buf_posptr);
 		}
 		i++, bytes++;
 	}
 	free(bi);
-	return (bytes);
+	return(bytes);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

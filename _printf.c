@@ -60,6 +60,7 @@ int _printf(const char *format, ...)
 		{'s', print_string},
 		{'i', _print_int},
 		{'d', _print_int},
+		{'b', bi_print}, 
 		};
 
 	init_buffer(buffer);
