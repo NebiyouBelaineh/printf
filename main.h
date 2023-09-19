@@ -60,4 +60,5 @@ int print_pointer(va_list print, char buffer[], int *buf_lenptr,
 int print_Special(va_list print, char buffer[], int *buf_lenptr,
 	int *buf_posptr);
 
+
 #endif/*MAIN_H*/

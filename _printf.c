@@ -65,6 +65,9 @@ int _printf(const char *format, ...)
 		{'x', print_hex},
 		{'X', print_HEX},
 		{'b', bi_print},
+		{'r', print_reverse},
+		{'R', print_rot13},
+		{'p', print_pointer},
 		};
 
 	init_buffer(buffer);
