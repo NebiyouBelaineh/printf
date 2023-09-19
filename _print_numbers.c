@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  *_print_int - Prints integers using %d or %i
  *
@@ -6,6 +7,7 @@
  *
  * Return: printed number of bytes
  */
+
 int _print_int(va_list print)
 {
 	int i = 0, count, num;

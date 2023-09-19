@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
+
 /**
 * print_arg - prints arguments for printf function
 *
@@ -7,6 +10,7 @@
 *
 * Return: number of printed bytes
 */
+
 int print_arg(va_list print, const char *format)
 {
 	int byte = 0/*,num*/;
@@ -54,7 +58,7 @@ int _printf(const char *format, ...)
 		/*return (-1);*/
 
 	va_start(print, format);
-	bytes += print_arg(print, format);
+	bytes = print_arg(print, format);
 	if (bytes < 0)
 	{
 		va_end(print);
