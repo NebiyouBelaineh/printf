@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
+#include <limits.h>
 
 
 /**
@@ -36,5 +38,17 @@ void init_buffer(char buffer[]);
 void buffer_write(char buffer[], int *buf_len, int *buf_pos);
 int buffer_copy(char format, char buffer[], int *buf_lenptr, int *buf_posptr);
 int print_num(int num, char buffer[], int *buf_lenptr, int *buf_posptr);
+int print_unsignedInt(unsigned int num, char buffer[],
+	int *buf_lenptr, int *buf_posptr);
+int print_octal(va_list print, char buffer[], int *buf_lenptr,
+	int *buf_posptr);
+int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
+int print_HEX(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr);
+unsigned int convert_toUnsignedInt(int num);
+char *convert_toOctal(unsigned int oct);
+char *convert_tohex(char size, unsigned int n);
+char *size_tHex(char size, size_t n);
+
+
 
 #endif/*MAIN_H*/
