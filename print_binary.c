@@ -73,5 +73,5 @@ int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 		i++, bytes++;
 	}
 	free(bi);
-	return(bytes);
+	return (bytes);
 }
