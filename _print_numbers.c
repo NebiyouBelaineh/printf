@@ -94,14 +94,14 @@ int print_octal(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 
 /**
 * print_hex - prints the hexadecimal conversion of a decimal number, lowercase
-* @args: number to be printed
+* @print: number to be printed
 * @buffer: space used for printing
 * @buf_lenptr: buffer length
 * @buf_posptr: current buffer index
 * Return: numbers of chars written to buffer
 **/
 
-int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
+int print_hex(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	unsigned int num;
 	int bytes = 0, i = 0;
@@ -129,14 +129,14 @@ int print_hex(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 
 /**
 * print_HEX - prints the hexadecimal conversion of a decimal number, uppercase
-* @args: number to be printed
+* @print: number to be printed
 * @buffer: space used for printing
 * @buf_lenptr: buffer length
 * @buf_posptr: current buffer index
 * Return: numbers of chars written to buffer
 **/
 
-int print_HEX(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
+int print_HEX(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes, i;
 	unsigned int num;
