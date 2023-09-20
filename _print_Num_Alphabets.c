@@ -104,19 +104,15 @@ int print_num(int num, char buffer[], int *buf_lenptr, int *buf_posptr)
 	int flag;
 
 	bytes = flag = 0;
-	if (*buf_lenptr < 1024 - 1)
-	{
 	if (num == 0)
 	{
 		buffer[*buf_posptr] = '0';
 		*buf_posptr += 1;
 		*buf_lenptr += 1;
-		buffer[*buf_posptr] = '\0';
-		return (1);
-	} else if (*buf_lenptr == 1024){
+	} else if (*buf_lenptr == 1024)
+	{
 		buffer_write(buffer, buf_lenptr, buf_posptr);
 		return (1);
-	}
 	}
 	else if (num > 0)
 		num *= -1;
