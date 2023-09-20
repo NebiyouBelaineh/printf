@@ -107,7 +107,7 @@ int print_hex(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 	int bytes = 0, i = 0;
 	char *hex;
 
-	num = va_arg(args, unsigned int);
+	num = va_arg(print, unsigned int);
 	hex = size_tHex('x', num);
 	if (hex == NULL)
 		return (0);
@@ -142,7 +142,7 @@ int print_HEX(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 	unsigned int num;
 	char *heX;
 
-	num = va_arg(args, unsigned int);
+	num = va_arg(print, unsigned int);
 	heX = convert_tohex('X', num);
 	if (heX == NULL)
 		return (0);
