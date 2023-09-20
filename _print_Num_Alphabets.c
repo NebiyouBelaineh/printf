@@ -13,11 +13,14 @@
 
 int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
-	if (*buf_lenptr < 1024)
+	if (*buf_lenptr < 1024 - 1)
 	{
 		buffer[*buf_posptr] = va_arg(print, int);
 		*buf_posptr += 1;
 		*buf_lenptr += 1;
+		buffer[*buf_posptr] = '\0';
+		return (1);
+
 		if (*buf_lenptr == 1024)
 			buffer_write(buffer, buf_lenptr, buf_posptr);
 	}
@@ -101,13 +104,17 @@ int print_num(int num, char buffer[], int *buf_lenptr, int *buf_posptr)
 	int flag;
 
 	bytes = flag = 0;
+	if (*buf_lenptr < 1024 - 1)
+	{
 	if (num == 0)
 	{
 		buffer[*buf_posptr] = '0';
 		*buf_posptr += 1;
 		*buf_lenptr += 1;
-		if (*buf_lenptr == 1024)
-			buffer_write(buffer, buf_lenptr, buf_posptr);
+		buffer[*buf_posptr] = '\0';
+		return (1);
+	} else if (*buf_lenptr == 1024)
+		buffer_write(buffer, buf_lenptr, buf_posptr);
 		return (1);
 	}
 	else if (num > 0)
