@@ -26,8 +26,7 @@ int *buf_posptr)
 	for (; i >= 0; i--, bytes++)
 	{
 		buffer[*buf_posptr] = str[i];
-		*buf_posptr += 1;
-		*buf_lenptr += 1;
+		*buf_posptr += 1, *buf_lenptr += 1;
 		if (*buf_lenptr == 1024)
 			buffer_write(buffer, buf_lenptr, buf_posptr);
 	}
@@ -64,8 +63,7 @@ int print_rot13(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 			tmp -= 13;
 
 		buffer[*buf_posptr] = tmp;
-		*buf_posptr += 1;
-		*buf_lenptr += 1;
+		*buf_posptr += 1, *buf_lenptr += 1;
 		if (*buf_lenptr == 1024)
 			buffer_write(buffer, buf_lenptr, buf_posptr);
 		i++, bytes++;
@@ -89,30 +87,38 @@ int print_pointer(va_list print, char buffer[], int *buf_lenptr,
 {
 	char *ptr;
 	int i = 0, bytes = 0;
-	size_t address;
+	size_t address = (size_t)va_arg(print, void *);
 
-	address = (size_t)va_arg(print, void *);
+	if (address == 0)
+	{
+		ptr = "(nil)";
+		while (ptr[i] != '\0')
+		{
+			buffer[*buf_posptr] = ptr[i];
+			*buf_posptr += 1, *buf_lenptr += 1;
+			if (*buf_lenptr == 1024)
+				buffer_write(buffer, buf_lenptr, buf_posptr);
+			i++, bytes++;
+		}
+	return (bytes);
+	}
 	ptr = size_tHex('x', address);
 	if (ptr == NULL)
 		return (0);
-	i = bytes = 0;
 	buffer[*buf_posptr] = '0';
 	bytes++;
-	*buf_posptr += 1;
-	*buf_lenptr += 1;
+	*buf_posptr += 1, *buf_lenptr += 1;
 	if (*buf_lenptr == 1024)
 		buffer_write(buffer, buf_lenptr, buf_posptr);
 	buffer[*buf_posptr] = 'x';
 	bytes++;
-	*buf_posptr += 1;
-	*buf_lenptr += 1;
+	*buf_posptr += 1, *buf_lenptr += 1;
 	if (*buf_lenptr == 1024)
 	buffer_write(buffer, buf_lenptr, buf_posptr);
 	while (ptr[i] != '\0')
 	{
 		buffer[*buf_posptr] = ptr[i];
-		*buf_posptr += 1;
-		*buf_lenptr += 1;
+		*buf_posptr += 1, *buf_lenptr += 1;
 		if (*buf_lenptr == 1024)
 			buffer_write(buffer, buf_lenptr, buf_posptr);
 		i++, bytes++;
