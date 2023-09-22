@@ -122,7 +122,6 @@ int print_hex(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 		return (1);
 	};
 
-	num = va_arg(print, unsigned int);
 	hex = size_tHex('x', num);
 	if (hex == NULL)
 		return (0);
