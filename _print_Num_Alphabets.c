@@ -13,21 +13,36 @@
 
 int print_char(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
+	char c = va_arg(print, int);
+
 	if (*buf_lenptr < 1024 - 1)
 	{
-		buffer[*buf_posptr] = va_arg(print, int);
-		*buf_posptr += 1;
-		*buf_lenptr += 1;
-		buffer[*buf_posptr] = '\0';
+		if (c == '\0')
+		{
+			buffer[*buf_posptr] = c;
+			*buf_posptr += 1;
+			*buf_lenptr += 1;
+			return (1);
+		}
+		else
+		{
+			buffer[*buf_posptr] = c;
+			*buf_posptr += 1;
+			*buf_lenptr += 1;
+		}
 		return (1);
-
-		if (*buf_lenptr == 1024)
-			buffer_write(buffer, buf_lenptr, buf_posptr);
 	}
 	else
 	{
 		buffer_write(buffer, buf_lenptr, buf_posptr);
-		buffer[*buf_posptr] = va_arg(print, int);
+		if (c == '\0')
+		{
+			buffer[*buf_posptr] = c;
+			*buf_posptr += 1;
+			*buf_lenptr += 1;
+			return (1);
+		}
+		buffer[*buf_posptr] = c;
 		*buf_posptr += 1;
 		*buf_lenptr += 1;
 	}
