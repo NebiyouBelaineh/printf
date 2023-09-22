@@ -71,9 +71,16 @@ int print_octal(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	unsigned int num;
 	int bytes = 0, i = 0;
-	char *octal;
+	char *octal, empty;
 
+	empty = '\0';
 	num = va_arg(print, unsigned int);
+	if (num == 0)
+	{
+		empty = num + 48;
+		buffer_copy(empty, buffer, buf_lenptr, buf_posptr);
+		return (1);
+	}
 	octal = convert_toOctal(num);
 	if (octal == NULL)
 		return (0);
@@ -105,7 +112,15 @@ int print_hex(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	unsigned int num;
 	int bytes = 0, i = 0;
-	char *hex;
+	char *hex, empty;
+
+	num = va_arg(print, unsigned int);
+	if (num == 0)
+	{
+		empty = num + 48;
+		buffer_copy(empty, buffer, buf_lenptr, buf_posptr);
+		return (1);
+	};
 
 	num = va_arg(print, unsigned int);
 	hex = size_tHex('x', num);
@@ -140,9 +155,15 @@ int print_HEX(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes, i;
 	unsigned int num;
-	char *heX;
+	char *heX, empty;
 
 	num = va_arg(print, unsigned int);
+	if (num == 0)
+	{
+		empty = num + 48;
+		buffer_copy(empty, buffer, buf_lenptr, buf_posptr);
+		return (1);
+	}
 	heX = convert_tohex('X', num);
 	if (heX == NULL)
 		return (0);
