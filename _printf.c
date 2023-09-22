@@ -74,6 +74,8 @@ int _printf(const char *format, ...)
 		{'p', print_pointer},
 		{'S', print_Special},
 		};
+	if (format == NULL)
+		return (0);
 
 	init_buffer(buffer);
 	bytes = buf_pos = 0;
@@ -81,8 +83,6 @@ int _printf(const char *format, ...)
 	buf_lenptr = &buf_len;
 	buf_posptr = &buf_pos;
 	va_start(print, format);
-	if (format == NULL || print == NULL)
-		return (bytes);
 	bytes = print_arg(format, print, buffer,
 			      buf_lenptr, buf_posptr, func_print);
 	buffer_write(buffer, buf_lenptr, buf_posptr);
