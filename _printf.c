@@ -18,6 +18,7 @@ int print_arg(const char *format, va_list print, char buffer[],
 		  int *buf_lenptr, int *buf_posptr, prt_func func_print[])
 {
 	int n, bytes, count, *track;
+
 	track = &n;
 
 	bytes = 0;
