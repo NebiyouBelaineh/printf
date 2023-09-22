@@ -81,8 +81,15 @@ int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes;
 	int num;
+	char empty;
 
 	num = va_arg(print, int);
+	if (num  == 0)
+	{
+		empty = num + 48;
+		buffer_copy(empty, buffer, buf_lenptr, buf_posptr);
+		return (1);
+	}
 	bytes = print_num(num, buffer, buf_lenptr, buf_posptr);
 	return (bytes);
 }
