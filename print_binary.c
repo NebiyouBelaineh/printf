@@ -54,9 +54,15 @@ int bi_print(va_list args, char buffer[], int *buf_lenptr, int *buf_posptr)
 {
 	int bytes, i;
 	unsigned int n;
-	char *bi;
+	char *bi, empty;
 
 	n = va_arg(args, unsigned int);
+	if (n == 0)
+	{
+		empty = n + 48;
+		buffer_copy(empty, buffer, buf_lenptr, buf_posptr);
+		return (1);
+	}
 	bi = bin_convert(n);
 	if (bi == NULL)
 		return (0);
