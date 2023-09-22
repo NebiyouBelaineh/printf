@@ -1,0 +1,92 @@
+.TH _printf 3 "23 sep 2023" "version 1.0" "_printf man page"
+.SH NAME
+.B _printf
+- Custom printf function for printing to standard output
+.SH SYNOPSIS
+.PP
+.B #include "main.h"
+.PP
+.B int _printf(const char *format, ...);
+.SH DESCRIPTION
+.B _printf
+is a custom implementation of the printf function. It takes a format string and a variable number of arguments, similar to the standard printf function, and prints formatted output to the standard output (stdout).
+.PP
+The format string contains format specifiers that start with '%' and are followed by conversion characters, such as 'd', 's', 'c', etc. These format specifiers are replaced by the values of the corresponding arguments provided in the argument list.
+.PP
+For example:
+.B
+_printf("Hello, %s!\n", "world");
+.PP
+In the above example, "%s" is a format specifier that indicates a string argument should be inserted in its place, resulting in the output "Hello, world!".
+.SH RETURN VALUE
+Upon successful execution, the function returns the number of characters printed to stdout, excluding the null byte used to terminate strings.
+.PP
+If an error occurs, a negative value is returned, and an error message is printed to stderr.
+.SH CONVERSION SPECIFIERS
+The following conversion specifiers are supported by
+.B _printf
+for formatting arguments:
+.PP
+.B %c
+- The argument is an int, which is converted to an unsigned char and printed.
+.PP
+.B %s
+- The argument is expected to be a pointer to a null-terminated character array (a string). Characters from the array are printed until the null terminating byte ('\0') is encountered.
+.PP
+.B %d, %i
+- The argument is an int, which is converted to decimal notation and printed.
+.PP
+.B %u
+- The argument is an unsigned int, which is printed as an unsigned decimal number.
+.PP
+.B %o
+- The argument is an int, which is converted to octal notation and printed.
+.PP
+.B %x
+- The argument is an int, which is converted to hexadecimal notation (lowercase letters) and printed.
+.PP
+.B %X
+- The argument is an int, which is converted to hexadecimal notation (uppercase letters) and printed.
+.PP
+.B %b
+- The argument is an unsigned int, which is printed as a binary number.
+.PP
+.B %r
+- The argument is a string (char *), which is reversed and printed.
+.PP
+.B %R
+- The argument is a string (char *), which is encoded using the ROT13 algorithm and printed.
+.PP
+.B %p
+- The argument is a pointer, which is printed in hexadecimal notation.
+.PP
+.B %S
+- The argument is a string (char *), which is printed normally, except for non-printable characters. Non-printable characters are printed as '\x' followed by their two-digit hexadecimal ASCII values.
+.SH EXAMPLES
+Here are some examples of using
+.B _printf
+to format and print output:
+.PP
+.B
+_printf("Hello, %s!\n", "world");
+.PP
+This prints "Hello, world!" to stdout.
+.PP
+.B
+_printf("Value of x is %d\n", x);
+.PP
+This prints the value of the variable 'x' as a decimal number.
+.SH SEE ALSO
+.PP
+.B printf(3)
+.SH BUGS
+.B _printf
+does not support all the features of the standard printf function, and its behavior may differ in certain cases.
+.SH AUTHOR
+Nebiyou Belaineh <https://github.com/NebiyouBelaineh>
+Biruk Assefa <https://github.com/Bruka25>
+.SH COPYRIGHT
+Copyright (C) 2023 Biruk Assefa and Nebiyou Belaineh. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.SH DISCLAIMER
+.B _printf
+is provided "as is" and without any warranty. Use it at your own risk.
