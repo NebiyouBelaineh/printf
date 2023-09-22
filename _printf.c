@@ -24,7 +24,7 @@ int print_arg(const char *format, va_list print, char buffer[],
 	bytes = 0;
 	for (n = 0; format != NULL; n++)
 	{
-		if (format == '\0')
+		if (format[n] == '\0')
 			return (1);
 		count = 0;
 		if (format[n] == '%')
