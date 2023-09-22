@@ -73,10 +73,12 @@ int *buf_posptr, int index, int value)
 * @buffer: buffer to write to
 * @buf_lenptr: pointer to current buffer length
 * @buf_posptr: pointer to current buffer position
+* @str: from va_arg
 *
 * Return: written number of bytes to buffer
 */
-int handle_nullCase(char buffer[], int *buf_lenptr, int *buf_posptr)
+int handle_nullCase(char buffer[], int *buf_lenptr, int *buf_posptr,
+char *str)
 {
 	buffer[*buf_posptr] = '\\';
 	buf_posptr += 1;
@@ -116,12 +118,11 @@ int print_Special(va_list print, char buffer[], int *buf_lenptr,
 	int *buf_posptr)
 {
 	int bytes = 0, i = 0, j;
-
 	char *str;
 
 	str = va_arg(print, char *);
-	if (str == NULL || *str == '\0')
-		return (handle_nullCase(buffer, buf_lenptr, buf_posptr));
+	if (str == NULL)
+		return (handle_nullCase(buffer, buf_lenptr, buf_posptr, str));
 	while (str[i] != '\0')
 	{
 		j = str[i];
