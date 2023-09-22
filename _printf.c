@@ -17,26 +17,29 @@
 int print_arg(const char *format, va_list print, char buffer[],
 		  int *buf_lenptr, int *buf_posptr, prt_func func_print[])
 {
-	int n, bytes, count;
+	int n, bytes, count, *track;
+	track = &n;
 
 	bytes = 0;
 	for (n = 0; format[n] != '\0' && format != NULL; n++)
 	{
+		count = 0;
 		if (format[n] == '%')
 		{
-			n++;
-			count = get_func(format[n], func_print, buffer,
+			++n;
+			if (format[n] != '%')
+			count += get_func(format, track, func_print, buffer,
 			 buf_lenptr, buf_posptr, print);
-			if (count == 0)
-				bytes += buffer_copy(format[n], buffer,
-				 buf_lenptr, buf_posptr);
-			bytes += count;
+			else
+				count += buffer_copy(format[n], buffer, buf_lenptr,
+				buf_posptr);
 		}
 		else
 		{
-			bytes += buffer_copy(format[n], buffer, buf_lenptr,
+			count += buffer_copy(format[n], buffer, buf_lenptr,
 						buf_posptr);
 		}
+		bytes += count;
 	}
 	return (bytes);
 }

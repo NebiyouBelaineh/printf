@@ -31,8 +31,8 @@ int print_string(va_list print, char buffer[], int *buf_lenptr,
 	int *buf_posptr);
 int print_percent(va_list print);
 int _print_int(va_list print, char buffer[], int *buf_lenptr, int *buf_posptr);
-int get_func(char format, prt_func func_print[], char buffer[],
-		     int *buf_lenptr, int *buf_posptr, va_list print);
+int get_func(const char *format, int *track, prt_func func_print[],
+	char buffer[], int *buf_lenptr, int *buf_posptr, va_list print);
 void init_buffer(char buffer[]);
 void buffer_write(char buffer[], int *buf_len, int *buf_pos);
 int buffer_copy(char format, char buffer[], int *buf_lenptr, int *buf_posptr);
